@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Trending Songs Ranking</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #5b6cff, #9b6cff);
+      color: white;
+      text-align: center;
+    }
+
+    h1 {
+      padding: 20px;
+    }
+
+    .container {
+      background: white;
+      color: #333;
+      width: 85%;
+      margin: auto;
+      border-radius: 20px;
+      padding: 20px;
+    }
+
+    .award {
+      background: #eef0ff;
+      padding: 20px;
+      border-radius: 15px;
+      margin-bottom: 25px;
+    }
+
+    .song {
+      border-bottom: 1px solid #ddd;
+      padding: 15px;
+    }
+
+    .rank {
+      font-size: 20px;
+      font-weight: bold;
+      color: #5b6cff;
+    }
+
+    button {
+      background: #5b6cff;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    button:hover {
+      background: #3f4bff;
+    }
+
+    footer {
+      padding: 20px;
+      color: #e6e6ff;
+    }
+  </style>
+</head>
+
+<body>
+
+<h1>🎵 Trending Songs Ranking 🎵</h1>
+<p>Vote for your favorite songs 💙💜</p>
+
+<div class="container">
+
+  <!-- Award of the Month -->
+  <div class="award">
+    <h2>🏆 Award of the Month</h2>
+    <p><strong>FLOWER – JISOO 🌸</strong></p>
+    <p>👑 Elegant, powerful, and loved by everyone!</p>
+  </div>
+
+  <!-- Songs -->
+  <script>
+    let songs = [
+      "Gabriela",
+      "JUMP – BLACKPINK",
+      "DO IT – Stray Kids",
+      "Blue – Yung Kai",
+      "CHANEL – Tyla",
+      "FLOWER – JISOO",
+      "All Eyes On Me – JISOO",
+      "Greedy – Tate McRae",
+      "Magnetic – ILLIT",
+      "Water – Tyla",
+      "Super Shy – NewJeans",
+      "Seven – Jungkook",
+      "Espresso – Sabrina Carpenter",
+      "Cruel Summer – Taylor Swift",
+      "Lovin On Me – Jack Harlow",
+      "God’s Menu – Stray Kids",
+      "Smart – LE SSERAFIM",
+      "Standing Next to You – Jungkook",
+      "Drama – aespa",
+      "Perfect Night – LE SSERAFIM",
+      "Houdini – Dua Lipa",
+      "Yes, And? – Ariana Grande",
+      "I AM – IVE",
+      "Fast Forward – Jeon Somi",
+      "Killin’ Me Good – Jihyo",
+      "OMG – NewJeans",
+      "LALISA – LISA",
+      "Rockstar – LISA",
+      "Anti-Hero – Taylor Swift",
+      "Flowers – Miley Cyrus"
+    ];
+
+    songs.forEach((song, index) => {
+      let votes = localStorage.getItem(song) || 0;
+      document.write(`
+        <div class="song">
+          <div class="rank">#${index + 1}</div>
+          <h3>${song} 🎧</h3>
+          <p>Votes: <span id="v${index}">${votes}</span></p>
+          <button onclick="vote('${song}', 'v${index}')">Vote ❤️</button>
+        </div>
+      `);
+    });
+
+    function vote(song, id) {
+      let count = localStorage.getItem(song) || 0;
+      count++;
+      localStorage.setItem(song, count);
+      document.getElementById(id).innerText = count;
+    }
+  </script>
+
+</div>
+
+<footer>
+  Made with 💙💜 | Song rankings by me 🎶
+</footer>
+
+</body>
+</html>
